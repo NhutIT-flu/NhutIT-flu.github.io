@@ -1,13 +1,21 @@
 import { Education as EducationType } from "@shared/schema";
 import { GraduationCap } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface EducationProps {
   education: EducationType;
+  id?: string;
 }
 
-export default function Education({ education }: EducationProps) {
+export default function Education({ education, id }: EducationProps) {
   return (
-    <section className="border-b border-gray-200 pb-8">
+    <motion.section 
+      className="border-b border-gray-200 pb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.6 }}
+      id={id}
+    >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <GraduationCap className="text-professional-blue" size={24} />
         Academic Profile
@@ -59,6 +67,6 @@ export default function Education({ education }: EducationProps) {
           )}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,8 +1,10 @@
 import { Project } from "@shared/schema";
 import { Laptop, Users, Zap, Shield, ExternalLink } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ProjectPortfolioProps {
   projects: Project[];
+  id?: string;
 }
 
 const metricIcons = {
@@ -26,9 +28,15 @@ function getMetricIcon(metric: string) {
   return Users; // default icon
 }
 
-export default function ProjectPortfolio({ projects }: ProjectPortfolioProps) {
+export default function ProjectPortfolio({ projects, id }: ProjectPortfolioProps) {
   return (
-    <section className="border-b border-gray-200 pb-8">
+    <motion.section 
+      className="border-b border-gray-200 pb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.8 }}
+      id={id}
+    >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <Laptop className="text-professional-blue" size={24} />
         Professional Project Portfolio
@@ -91,6 +99,6 @@ export default function ProjectPortfolio({ projects }: ProjectPortfolioProps) {
           </div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

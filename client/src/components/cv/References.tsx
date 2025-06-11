@@ -1,8 +1,10 @@
 import { Reference } from "@shared/schema";
 import { Handshake, Mail, Phone, Linkedin, Globe, Info } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ReferencesProps {
   references: Reference[];
+  id?: string;
 }
 
 function getInitials(name: string): string {
@@ -14,9 +16,14 @@ function getInitials(name: string): string {
     .slice(0, 2);
 }
 
-export default function References({ references }: ReferencesProps) {
+export default function References({ references, id }: ReferencesProps) {
   return (
-    <section>
+    <motion.section 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 1.4 }}
+      id={id}
+    >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <Handshake className="text-professional-blue" size={24} />
         Professional References
@@ -63,6 +70,6 @@ export default function References({ references }: ReferencesProps) {
           Additional references available upon request. All references have been contacted and have agreed to provide recommendations.
         </p>
       </div>
-    </section>
+    </motion.section>
   );
-}
+} 

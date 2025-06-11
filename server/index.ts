@@ -1,10 +1,18 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import dotenv from 'dotenv';
+import cors from 'cors';
+import nodemailer from 'nodemailer';
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Middleware
+app.use(cors());
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -34,6 +42,43 @@ app.use((req, res, next) => {
   });
 
   next();
+});
+
+// Contact Form Endpoint
+app.post('/api/contact', async (req: Request, res: Response) => {
+  const { name, email, message } = req.body;
+
+  // Basic validation
+  if (!name || !email || !message) {
+    return res.status(400).json({ message: 'Please fill in all fields.' });
+  }
+
+  // Nodemailer transporter setup
+  const transporter = nodemailer.createTransport({
+    service: 'gmail', // You can use other services like Outlook, Yahoo, etc.
+    auth: {
+      user: process.env.EMAIL_USER, // Your email address from .env
+      pass: process.env.EMAIL_PASS, // Your app password from .env
+    },
+  });
+
+  const mailOptions = {
+    from: `"${name}" <${email}>`, // Sender address
+    to: process.env.EMAIL_USER, // Recipient address (your email where you want to receive messages)
+    subject: `New message from ${name} (via CV Contact Form)`, // Subject line
+    html: `<p>You have a new contact message:</p>
+           <p><strong>Name:</strong> ${name}</p>
+           <p><strong>Email:</strong> ${email}</p>
+           <p><strong>Message:</strong> ${message}</p>`, // HTML body
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: 'Message sent successfully!' });
+  } catch (error) {
+    console.error('Error sending email:', error);
+    res.status(500).json({ message: 'Failed to send message.', error: error.message });
+  }
 });
 
 (async () => {

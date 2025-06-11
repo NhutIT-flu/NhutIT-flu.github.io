@@ -1,8 +1,10 @@
 import { Certification } from "@shared/schema";
 import { Award, Trophy, Medal, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface CertificationsProps {
   certifications: Certification[];
+  id?: string;
 }
 
 const typeIcons = {
@@ -15,12 +17,18 @@ const typeColors = {
   achievement: "text-yellow-500",
 };
 
-export default function Certifications({ certifications }: CertificationsProps) {
+export default function Certifications({ certifications, id }: CertificationsProps) {
   const certificationItems = certifications.filter(cert => cert.type === "certification");
   const achievementItems = certifications.filter(cert => cert.type === "achievement");
 
   return (
-    <section className="border-b border-gray-200 pb-8">
+    <motion.section 
+      className="border-b border-gray-200 pb-8"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 1.2 }}
+      id={id}
+    >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <Award className="text-professional-blue" size={24} />
         Certifications & Achievements
@@ -74,6 +82,6 @@ export default function Certifications({ certifications }: CertificationsProps) 
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

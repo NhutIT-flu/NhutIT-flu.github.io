@@ -1,41 +1,31 @@
-import { Download, Printer } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Github, Facebook } from "lucide-react";
 
-interface CVFooterProps {
-  lastUpdated: Date;
-  onExportPDF: () => void;
-  onPrint: () => void;
-}
+// interface CVFooterProps {
+//   // lastUpdated: Date;
+//   // onExportPDF: () => void;
+//   // onPrint: () => void;
+// }
 
-export default function CVFooter({ lastUpdated, onExportPDF, onPrint }: CVFooterProps) {
+export default function CVFooter() {
   return (
     <footer className="bg-gray-100 border-t border-gray-200 p-6 print-hide">
-      <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-        <div className="text-sm text-charcoal-secondary">
-          Last updated: <span>{lastUpdated.toLocaleDateString("en-US", { 
-            year: "numeric", 
-            month: "long", 
-            day: "numeric" 
-          })}</span>
+      <div className="flex flex-col md:flex-row items-center gap-4 w-full">
+        {/* Left (empty for alignment) */}
+        <div className="flex-1 hidden md:block"></div>
+
+        {/* Center (Social Icons) */}
+        <div className="flex gap-4 justify-center md:flex-grow-0">
+          <a href="https://www.facebook.com/nhut.ngokha/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-navy-primary">
+            <Facebook size={24} />
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-navy-primary">
+            <Github size={24} />
+          </a>
         </div>
-        
-        {/* Export Options */}
-        <div className="flex gap-3">
-          <Button 
-            onClick={onExportPDF}
-            className="flex items-center gap-2 bg-navy-primary text-white hover:bg-navy-secondary"
-          >
-            <Download size={16} />
-            <span>Export PDF</span>
-          </Button>
-          <Button 
-            variant="outline"
-            onClick={onPrint}
-            className="flex items-center gap-2 border-navy-primary text-navy-primary hover:bg-navy-primary hover:text-white"
-          >
-            <Printer size={16} />
-            <span>Print</span>
-          </Button>
+
+        {/* Right (Copyright) */}
+        <div className="text-sm text-charcoal-secondary flex-1 text-center md:text-right">
+          <p>© 2025 NhutIT. All rights reserved.</p>
         </div>
       </div>
     </footer>

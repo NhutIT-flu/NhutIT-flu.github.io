@@ -1,49 +1,36 @@
+import React from "react";
 import { Skill } from "@shared/schema";
-import { Code, Monitor, Server, Cloud, Settings } from "lucide-react";
+import { Code, Cloud, Tool, LayoutDashboard, Database, Laptop, Settings } from "lucide-react";
 import { motion } from "framer-motion";
+import SkillProficiency from "./SkillProficiency"; // Assuming this is in the same directory
 
-interface TechnicalSkillsProps {
+interface KyNangChuyenMonProps {
   skills: Skill[];
   id?: string;
 }
 
 const categoryIcons = {
-  frontend: Monitor,
-  backend: Server,
+  frontend: LayoutDashboard,
+  backend: Database,
   cloud: Cloud,
   tools: Settings,
 };
 
 const categoryColors = {
   frontend: "text-blue-500",
-  backend: "text-green-500", 
-  cloud: "text-blue-500",
-  tools: "text-orange-500",
+  backend: "text-green-500",
+  cloud: "text-indigo-500",
+  tools: "text-gray-500",
 };
 
 const categoryBadgeColors = {
   frontend: "bg-blue-100 text-blue-800",
   backend: "bg-green-100 text-green-800",
-  cloud: "bg-blue-100 text-blue-800",
-  tools: "bg-orange-100 text-orange-800",
+  cloud: "bg-indigo-100 text-indigo-800",
+  tools: "bg-gray-100 text-gray-800",
 };
 
-function SkillProficiency({ level }: { level: number }) {
-  return (
-    <div className="flex gap-1">
-      {[1, 2, 3, 4, 5].map((dot) => (
-        <div
-          key={dot}
-          className={`w-3 h-3 rounded-full ${
-            dot <= level ? "bg-success-green" : "bg-gray-300"
-          }`}
-        />
-      ))}
-    </div>
-  );
-}
-
-export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
+export default function KyNangChuyenMon({ skills, id }: KyNangChuyenMonProps) {
   const groupedSkills = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
       acc[skill.category] = [];
@@ -61,7 +48,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
           <h3 className="text-lg font-semibold text-navy-secondary mb-4 flex items-center gap-2">
             <Icon className={iconColor} size={20} />
-            {category === "cloud" ? "Cloud & DevOps" : "Development Tools"}
+            {category === "cloud" ? "Điện Toán Đám Mây & DevOps" : "Công Cụ Phát Triển"}
           </h3>
           <div className="flex flex-wrap gap-2">
             {categorySkills.map((skill) => (
@@ -83,7 +70,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
       <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
         <h3 className="text-lg font-semibold text-navy-secondary mb-4 flex items-center gap-2">
           <Icon className={iconColor} size={20} />
-          {category === "frontend" ? "Frontend Development" : "Backend Development"}
+          {category === "frontend" ? "Phát Triển Frontend" : "Phát Triển Backend"}
         </h3>
         <div className="space-y-3">
           {categorySkills.map((skill) => (
@@ -107,7 +94,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
     >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <Code className="text-professional-blue" size={24} />
-        Technical Expertise Matrix
+        Ma Trận Kỹ Năng Chuyên Môn
       </h2>
       
       <div className="grid md:grid-cols-2 gap-6">

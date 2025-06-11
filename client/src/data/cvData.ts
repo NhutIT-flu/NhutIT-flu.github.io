@@ -1,5 +1,5 @@
 import { CVProfile, Education, Skill, Project, Certification, Reference } from "@shared/schema";
-import profileImage from "@assets/image_1749637475069.png";
+import profileImage from "@assets/avatar.png";
 
 export const cvProfile: CVProfile = {
   id: 1,
@@ -29,26 +29,25 @@ export const education: Education = {
     "Collaborative learning approach with peers"
   ],
   coursework: [
-    "Data Structures & Algorithms",
-    "Software Engineering Principles", 
-    "Database Systems",
-    "Web Development Technologies",
+    "Data Structures and Algorithms",
+    "Software Engineering",
+    "Database Management Systems",
     "Object-Oriented Programming",
+    "Java Programming",
     "Computer Networks"
   ]
 };
 
 export const skills: Skill[] = [
   // Frontend
-  { id: 1, cvProfileId: 1, name: "JavaScript", category: "frontend", proficiency: 4 },
-  { id: 2, cvProfileId: 1, name: "TypeScript", category: "frontend", proficiency: 3 },
-  { id: 3, cvProfileId: 1, name: "React.js", category: "frontend", proficiency: 4 },
-  { id: 4, cvProfileId: 1, name: "HTML/CSS", category: "frontend", proficiency: 4 },
+  { id: 1, cvProfileId: 1, name: "JavaScript", category: "frontend", proficiency: 3 },
+  { id: 3, cvProfileId: 1, name: "React.js", category: "frontend", proficiency: 3 },
+  { id: 4, cvProfileId: 1, name: "HTML/CSS", category: "frontend", proficiency: 3 },
   
   // Backend
-  { id: 5, cvProfileId: 1, name: "Java", category: "backend", proficiency: 4 },
-  { id: 6, cvProfileId: 1, name: "Node.js", category: "backend", proficiency: 3 },
-  { id: 7, cvProfileId: 1, name: "PostgreSQL", category: "backend", proficiency: 3 },
+  { id: 5, cvProfileId: 1, name: "Java", category: "backend", proficiency: 3 },
+  { id: 6, cvProfileId: 1, name: "Node.js", category: "backend", proficiency: 2 },
+  { id: 7, cvProfileId: 1, name: "PostgreSQL", category: "backend", proficiency: 2 },
   
   // Tools & Version Control
   { id: 8, cvProfileId: 1, name: "Git", category: "tools", proficiency: 4 },
@@ -72,14 +71,14 @@ export const projects: Project[] = [
 ];
 
 export const certifications: Certification[] = [
-  {
-    id: 1,
-    cvProfileId: 1,
-    name: "Academic Excellence in Programming",
-    issuer: "University of Transport and Communications HCM",
-    validUntil: "2024",
-    type: "achievement"
-  },
+  // {
+  //   id: 1,
+  //   cvProfileId: 1,
+  //   name: "Academic Excellence in Programming",
+  //   issuer: "University of Transport and Communications HCM",
+  //   validUntil: "2024",
+  //   type: "achievement"
+  // },
   {
     id: 2,
     cvProfileId: 1,
@@ -90,28 +89,16 @@ export const certifications: Certification[] = [
   }
 ];
 
-export const references: Reference[] = [
-  {
-    id: 1,
-    cvProfileId: 1,
-    name: "Available Upon Request",
-    title: "Academic Supervisor",
-    company: "University of Transport and Communications HCM",
-    email: "references@available.request",
-    phone: null,
-    linkedin: null
-  }
-];
+export const references: Reference[] = [];
 
 export const githubStats = {
-  totalContributions: 150,
-  publicRepositories: 8,
-  totalStars: 12,
-  followers: 5,
+  totalContributions: 9,
+  publicRepositories: 7,
+  totalStars: 6,
+  followers: 4,
   topRepositories: [
     { name: "Eduquint", description: "Educational platform project", stars: 5 },
-    { name: "university-projects", description: "Academic coursework and assignments", stars: 4 },
-    { name: "learning-portfolio", description: "Personal learning journey", stars: 3 }
+    { name: "ExpenseManagerupdate", description: "Java-based expense management system.", stars: 3 }
   ],
   languages: [
     { name: "JavaScript", abbreviation: "JS", percentage: 40.0, color: "from-blue-400 to-blue-600" },
