@@ -1,38 +1,29 @@
-import { users, type User, type InsertUser } from "@shared/schema";
+import { CVProfile, type InsertCVProfile } from "@shared/schema";
 
-// modify the interface with any CRUD methods
-// you might need
-
+// CV-focused storage interface
 export interface IStorage {
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  getCVProfile(id: number): Promise<CVProfile | undefined>;
+  createCVProfile(profile: InsertCVProfile): Promise<CVProfile>;
 }
 
 export class MemStorage implements IStorage {
-  private users: Map<number, User>;
+  private cvProfiles: Map<number, CVProfile>;
   currentId: number;
 
   constructor() {
-    this.users = new Map();
+    this.cvProfiles = new Map();
     this.currentId = 1;
   }
 
-  async getUser(id: number): Promise<User | undefined> {
-    return this.users.get(id);
+  async getCVProfile(id: number): Promise<CVProfile | undefined> {
+    return this.cvProfiles.get(id);
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async createCVProfile(insertProfile: InsertCVProfile): Promise<CVProfile> {
     const id = this.currentId++;
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+    const profile: CVProfile = { ...insertProfile, id };
+    this.cvProfiles.set(id, profile);
+    return profile;
   }
 }
 

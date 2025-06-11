@@ -1,8 +1,8 @@
-import { Education } from "@shared/schema";
+import { Education as EducationType } from "@shared/schema";
 import { GraduationCap } from "lucide-react";
 
 interface EducationProps {
-  education: Education;
+  education: EducationType;
 }
 
 export default function Education({ education }: EducationProps) {
