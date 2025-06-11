@@ -26,7 +26,7 @@ export default function CVHeader({ profile }: CVHeaderProps) {
         
         {/* Professional Information */}
         <div className="flex-1 text-center lg:text-left">
-          <h1 className="text-4xl font-bold mb-2">{profile.fullName}</h1>
+          <h1 className="text-4xl font-bold mb-2 text-white">{profile.fullName}</h1>
           <p className="text-xl font-medium text-blue-200 mb-4">{profile.title}</p>
           
           {/* Contact Information Grid */}
