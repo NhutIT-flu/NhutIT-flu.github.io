@@ -7,7 +7,7 @@ interface CVHeaderProps {
 
 export default function CVHeader({ profile }: CVHeaderProps) {
   return (
-    <header className="bg-gradient-to-r from-navy-primary to-navy-secondary text-white p-8">
+    <header className="bg-blue-900 text-white p-8">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
         {/* Profile Image Section */}
         <div className="flex-shrink-0">
@@ -30,37 +30,37 @@ export default function CVHeader({ profile }: CVHeaderProps) {
           <p className="text-xl font-medium text-blue-200 mb-4">{profile.title}</p>
           
           {/* Contact Information Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-white">
             <div className="flex items-center justify-center lg:justify-start gap-2">
-              <Mail className="w-4 h-4" />
-              <span>{profile.email}</span>
+              <Mail className="w-4 h-4 text-white" />
+              <span className="text-white">{profile.email}</span>
             </div>
             <div className="flex items-center justify-center lg:justify-start gap-2">
-              <Phone className="w-4 h-4" />
-              <span>{profile.phone}</span>
+              <Phone className="w-4 h-4 text-white" />
+              <span className="text-white">{profile.phone}</span>
             </div>
             {profile.linkedin && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Linkedin className="w-4 h-4" />
-                <span>{profile.linkedin}</span>
+                <Linkedin className="w-4 h-4 text-white" />
+                <span className="text-white">{profile.linkedin}</span>
               </div>
             )}
             {profile.github && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Github className="w-4 h-4" />
-                <span>{profile.github}</span>
+                <Github className="w-4 h-4 text-white" />
+                <span className="text-white">{profile.github}</span>
               </div>
             )}
             {profile.location && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <MapPin className="w-4 h-4" />
-                <span>{profile.location}</span>
+                <MapPin className="w-4 h-4 text-white" />
+                <span className="text-white">{profile.location}</span>
               </div>
             )}
             {profile.portfolio && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
-                <Globe className="w-4 h-4" />
-                <span>{profile.portfolio}</span>
+                <Globe className="w-4 h-4 text-white" />
+                <span className="text-white">{profile.portfolio}</span>
               </div>
             )}
           </div>
