@@ -104,7 +104,7 @@ export default function TechnicalSkills({ skills }: TechnicalSkillsProps) {
       
       <div className="grid md:grid-cols-2 gap-6">
         {Object.entries(groupedSkills).map(([category, categorySkills]) =>
-          renderSkillCategory(category, categorySkills)
+          <div key={category}>{renderSkillCategory(category, categorySkills)}</div>
         )}
       </div>
     </section>
