@@ -11,7 +11,7 @@ export const cvProfile: CVProfile = {
   github: "https://github.com/NhutIT-flu",
   location: "Ho Chi Minh City, Vietnam",
   portfolio: null,
-  summary: "Information Technology student at University of Transport and Communications Ho Chi Minh City with a passion for full-stack development. Specializing in JavaScript, Java, React, Node.js, and PostgreSQL. Strong team player with excellent listening and communication skills. Currently developing innovative projects including the Eduquint platform. Seeking opportunities to apply technical expertise and a collaborative mindset in challenging software development roles.",
+  summary: "Information Technology student at University of Transport and Communications Ho Chi Minh City with a passion for full-stack development. Specializing in JavaScript, TypeScript, Java, React, Node.js, and PostgreSQL. Strong team player with excellent listening and communication skills. Currently developing innovative projects including the Eduquint platform. Seeking opportunities to apply technical expertise and a collaborative mindset in challenging software development roles.",
   profileImage: profileImage,
   lastUpdated: new Date("2025-06-11"),
 };
@@ -41,6 +41,7 @@ export const education: Education = {
 export const skills: Skill[] = [
   // Frontend
   { id: 1, cvProfileId: 1, name: "JavaScript", category: "frontend", proficiency: 3 },
+  { id: 2, cvProfileId: 1, name: "TypeScript", category: "frontend", proficiency: 3 },
   { id: 3, cvProfileId: 1, name: "React.js", category: "frontend", proficiency: 3 },
   { id: 4, cvProfileId: 1, name: "HTML/CSS", category: "frontend", proficiency: 3 },
   
