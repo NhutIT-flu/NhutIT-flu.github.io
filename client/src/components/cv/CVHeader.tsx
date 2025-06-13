@@ -1,20 +1,20 @@
 import { CVProfile } from "@shared/schema";
 import { Mail, Phone, MapPin, Globe, Github, Linkedin, User } from "lucide-react";
 
-interface CVHeaderProps {
-  profile: CVProfile;
+interface PropsTiêuĐềCV {
+  thôngTinHồSơ: CVProfile;
 }
 
-export default function CVHeader({ profile }: CVHeaderProps) {
+export default function TiêuĐềCV({ thôngTinHồSơ }: PropsTiêuĐềCV) {
   return (
     <header className="bg-blue-900 text-white p-8">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6">
-        {/* Profile Image Section */}
+        {/* Phần Ảnh Đại Diện */}
         <div className="flex-shrink-0">
-          {profile.profileImage ? (
+          {thôngTinHồSơ.profileImage ? (
             <img 
-              src={profile.profileImage} 
-              alt={profile.fullName}
+              src={thôngTinHồSơ.profileImage} 
+              alt={thôngTinHồSơ.fullName}
               className="w-32 h-32 rounded-full border-4 border-white/30 object-cover"
             />
           ) : (
@@ -24,43 +24,51 @@ export default function CVHeader({ profile }: CVHeaderProps) {
           )}
         </div>
         
-        {/* Professional Information */}
+        {/* Thông Tin Chuyên Môn */}
         <div className="flex-1 text-center lg:text-left">
-          <h1 className="text-4xl font-bold mb-2 text-white">{profile.fullName}</h1>
-          <p className="text-xl font-medium text-blue-200 mb-4">{profile.title}</p>
+          <h1 className="text-4xl font-bold mb-2 text-white">{thôngTinHồSơ.fullName}</h1>
+          <p className="text-xl font-medium text-blue-200 mb-4">{thôngTinHồSơ.title}</p>
           
-          {/* Contact Information Grid */}
+          {/* Lưới Thông Tin Liên Hệ */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-white">
             <div className="flex items-center justify-center lg:justify-start gap-2">
               <Mail className="w-4 h-4 text-white" />
-              <span className="text-white">{profile.email}</span>
+              <a href={`mailto:${thôngTinHồSơ.email}`} className="text-white hover:underline">
+                {thôngTinHồSơ.email}
+              </a>
             </div>
             <div className="flex items-center justify-center lg:justify-start gap-2">
               <Phone className="w-4 h-4 text-white" />
-              <span className="text-white">{profile.phone}</span>
+              <a href={`tel:${thôngTinHồSơ.phone}`} className="text-white hover:underline">
+                {thôngTinHồSơ.phone}
+              </a>
             </div>
-            {profile.linkedin && (
+            {thôngTinHồSơ.linkedin && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <Linkedin className="w-4 h-4 text-white" />
-                <span className="text-white">{profile.linkedin}</span>
+                <a href={thôngTinHồSơ.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:underline">
+                  {thôngTinHồSơ.linkedin}
+                </a>
               </div>
             )}
-            {profile.github && (
+            {thôngTinHồSơ.github && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <Github className="w-4 h-4 text-white" />
-                <span className="text-white">{profile.github}</span>
+                <a href={thôngTinHồSơ.github} target="_blank" rel="noopener noreferrer" className="text-white hover:underline">
+                  {thôngTinHồSơ.github}
+                </a>
               </div>
             )}
-            {profile.location && (
+            {thôngTinHồSơ.location && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <MapPin className="w-4 h-4 text-white" />
-                <span className="text-white">{profile.location}</span>
+                <span className="text-white">{thôngTinHồSơ.location}</span>
               </div>
             )}
-            {profile.portfolio && (
+            {thôngTinHồSơ.portfolio && (
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <Globe className="w-4 h-4 text-white" />
-                <span className="text-white">{profile.portfolio}</span>
+                <span className="text-white">{thôngTinHồSơ.portfolio}</span>
               </div>
             )}
           </div>

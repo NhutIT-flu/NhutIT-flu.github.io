@@ -1,8 +1,8 @@
 import { Github, Star, Database, Clock, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface GitHubStatsProps {
-  stats: {
+interface PropsThốngKêGitHub {
+  sốLiệuThốngKê: {
     totalContributions: number;
     publicRepositories: number;
     totalStars: number;
@@ -22,7 +22,7 @@ interface GitHubStatsProps {
   id?: string;
 }
 
-export default function GitHubStats({ stats, id }: GitHubStatsProps) {
+export default function ThốngKêGitHub({ sốLiệuThốngKê, id }: PropsThốngKêGitHub) {
   return (
     <motion.section 
       className="border-b border-gray-200 pb-8"
@@ -43,19 +43,19 @@ export default function GitHubStats({ stats, id }: GitHubStatsProps) {
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-charcoal-secondary">Total Contributions</span>
-              <span className="font-bold text-success-green">{stats.totalContributions.toLocaleString()}</span>
+              <span className="font-bold text-success-green">{sốLiệuThốngKê.totalContributions.toLocaleString()}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-charcoal-secondary">Public Repositories</span>
-              <span className="font-bold text-professional-blue">{stats.publicRepositories}</span>
+              <span className="font-bold text-professional-blue">{sốLiệuThốngKê.publicRepositories}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-charcoal-secondary">Total Stars Received</span>
-              <span className="font-bold text-yellow-500">{stats.totalStars}</span>
+              <span className="font-bold text-yellow-500">{sốLiệuThốngKê.totalStars}</span>
             </div>
             <div className="flex justify-between items-center">
               <span className="text-charcoal-secondary">Followers</span>
-              <span className="font-bold text-purple-500">{stats.followers}</span>
+              <span className="font-bold text-purple-500">{sốLiệuThốngKê.followers}</span>
             </div>
           </div>
         </div>
@@ -64,7 +64,7 @@ export default function GitHubStats({ stats, id }: GitHubStatsProps) {
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
           <h3 className="text-lg font-semibold text-navy-secondary mb-4">Top Repositories</h3>
           <div className="space-y-3">
-            {stats.topRepositories.map((repo, index) => (
+            {sốLiệuThốngKê.topRepositories.map((repo, index) => (
               <div key={index} className="flex justify-between items-center">
                 <div>
                   <span className="font-medium text-professional-blue">{repo.name}</span>
@@ -81,11 +81,11 @@ export default function GitHubStats({ stats, id }: GitHubStatsProps) {
           </div>
         </div>
 
-        {/* Languages Used */}
+        {/* Most Used Languages */}
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional md:col-span-2">
           <h3 className="text-lg font-semibold text-navy-secondary mb-4">Most Used Languages</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {stats.languages.map((language, index) => (
+            {sốLiệuThốngKê.languages.map((language, index) => (
               <div key={index} className="text-center">
                 <div className={`w-16 h-16 mx-auto mb-2 bg-gradient-to-br ${language.color} rounded-full flex items-center justify-center`}>
                   <span className="text-white font-bold">{language.abbreviation}</span>

@@ -2,24 +2,24 @@ import { Certification } from "@shared/schema";
 import { Award, Trophy, Medal, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface CertificationsProps {
-  certifications: Certification[];
+interface PropsChứngChỉThànhTích {
+  chứngChỉ: Certification[];
   id?: string;
 }
 
-const typeIcons = {
+const biểuTượngLoại = {
   certification: Award,
   achievement: Trophy,
 };
 
-const typeColors = {
+const màuSắcLoại = {
   certification: "text-yellow-500",
   achievement: "text-yellow-500",
 };
 
-export default function Certifications({ certifications, id }: CertificationsProps) {
-  const certificationItems = certifications.filter(cert => cert.type === "certification");
-  const achievementItems = certifications.filter(cert => cert.type === "achievement");
+export default function ChứngChỉThànhTích({ chứngChỉ, id }: PropsChứngChỉThànhTích) {
+  const mụcChứngChỉ = chứngChỉ.filter(cert => cert.type === "certification");
+  const mụcThànhTích = chứngChỉ.filter(cert => cert.type === "achievement");
 
   return (
     <motion.section 
@@ -39,7 +39,7 @@ export default function Certifications({ certifications, id }: CertificationsPro
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
           <h3 className="text-lg font-semibold text-navy-secondary mb-4">Professional Certifications</h3>
           <div className="space-y-4">
-            {certificationItems.map((cert) => (
+            {mụcChứngChỉ.map((cert) => (
               <div key={cert.id} className="flex items-start gap-3">
                 <Award className="text-yellow-500 mt-1" size={20} />
                 <div>
@@ -57,21 +57,21 @@ export default function Certifications({ certifications, id }: CertificationsPro
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
           <h3 className="text-lg font-semibold text-navy-secondary mb-4">Achievements & Awards</h3>
           <div className="space-y-4">
-            {achievementItems.map((achievement) => {
-              let Icon = Trophy;
-              let colorClass = "text-yellow-500";
+            {mụcThànhTích.map((achievement) => {
+              let BiểuTượng = Trophy;
+              let lớpMàu = "text-yellow-500";
               
               if (achievement.name.includes("Summer of Code")) {
-                Icon = Medal;
-                colorClass = "text-gray-500";
+                BiểuTượng = Medal;
+                lớpMàu = "text-gray-500";
               } else if (achievement.name.includes("Innovation")) {
-                Icon = Star;
-                colorClass = "text-purple-500";
+                BiểuTượng = Star;
+                lớpMàu = "text-purple-500";
               }
               
               return (
                 <div key={achievement.id} className="flex items-start gap-3">
-                  <Icon className={`${colorClass} mt-1`} size={20} />
+                  <BiểuTượng className={`${lớpMàu} mt-1`} size={20} />
                   <div>
                     <p className="font-medium">{achievement.name}</p>
                     <p className="text-sm text-charcoal-secondary">{achievement.validUntil}</p>

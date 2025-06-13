@@ -7,11 +7,11 @@ export const cvProfile: CVProfile = {
   title: "Software Engineering Student & Full-Stack Developer",
   email: "nhutp2945@gmail.com",
   phone: "0827410398",
-  linkedin: "linkedin.com/in/phamminhnhut",
+  linkedin: "https://linkedin.com/in/phamminhnhut",
   github: "https://github.com/NhutIT-flu",
   location: "Ho Chi Minh City, Vietnam",
   portfolio: null,
-  summary: "Dedicated Software Engineering student at University of Transport and Communications Ho Chi Minh City with passion for full-stack development. Specializing in JavaScript, Java, TypeScript, React, Node.js, and PostgreSQL. Strong team collaboration skills with excellent listening and communication abilities. Currently developing innovative projects including Eduquint platform. Seeking opportunities to apply technical expertise and collaborative mindset in challenging software development roles.",
+  summary: "Information Technology student at University of Transport and Communications Ho Chi Minh City with a passion for full-stack development. Specializing in JavaScript, Java, React, Node.js, and PostgreSQL. Strong team player with excellent listening and communication skills. Currently developing innovative projects including the Eduquint platform. Seeking opportunities to apply technical expertise and a collaborative mindset in challenging software development roles.",
   profileImage: profileImage,
   lastUpdated: new Date("2025-06-11"),
 };

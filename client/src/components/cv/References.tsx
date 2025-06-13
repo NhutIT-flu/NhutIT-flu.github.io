@@ -2,13 +2,13 @@ import { Reference } from "@shared/schema";
 import { Handshake, Mail, Phone, Linkedin, Globe, Info } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface ReferencesProps {
-  references: Reference[];
+interface PropsThamKhảo {
+  danhSáchThamKhảo: Reference[];
   id?: string;
 }
 
-function getInitials(name: string): string {
-  return name
+function lấyChữCáiĐầu(tên: string): string {
+  return tên
     .split(" ")
     .map(word => word.charAt(0))
     .join("")
@@ -16,7 +16,7 @@ function getInitials(name: string): string {
     .slice(0, 2);
 }
 
-export default function References({ references, id }: ReferencesProps) {
+export default function ThamKhảo({ danhSáchThamKhảo, id }: PropsThamKhảo) {
   return (
     <motion.section 
       initial={{ opacity: 0, y: 20 }}
@@ -30,31 +30,31 @@ export default function References({ references, id }: ReferencesProps) {
       </h2>
       
       <div className="grid md:grid-cols-2 gap-6">
-        {references.map((reference) => (
-          <div key={reference.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
+        {danhSáchThamKhảo.map((ngườiThamKhảo) => (
+          <div key={ngườiThamKhảo.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional">
             <div className="text-center">
               <div className="w-16 h-16 bg-navy-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-lg">{getInitials(reference.name)}</span>
+                <span className="text-white font-bold text-lg">{lấyChữCáiĐầu(ngườiThamKhảo.name)}</span>
               </div>
-              <h3 className="font-semibold text-lg text-navy-secondary">{reference.name}</h3>
-              <p className="text-charcoal-secondary mb-2">{reference.title}</p>
-              <p className="text-sm text-charcoal-secondary mb-4">{reference.company}</p>
+              <h3 className="font-semibold text-lg text-navy-secondary">{ngườiThamKhảo.name}</h3>
+              <p className="text-charcoal-secondary mb-2">{ngườiThamKhảo.title}</p>
+              <p className="text-sm text-charcoal-secondary mb-4">{ngườiThamKhảo.company}</p>
               
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-center gap-2">
                   <Mail className="text-professional-blue" size={16} />
-                  <span>{reference.email}</span>
+                  <span>{ngườiThamKhảo.email}</span>
                 </div>
-                {reference.phone && (
+                {ngườiThamKhảo.phone && (
                   <div className="flex items-center justify-center gap-2">
                     <Phone className="text-professional-blue" size={16} />
-                    <span>{reference.phone}</span>
+                    <span>{ngườiThamKhảo.phone}</span>
                   </div>
                 )}
-                {reference.linkedin && (
+                {ngườiThamKhảo.linkedin && (
                   <div className="flex items-center justify-center gap-2">
                     <Linkedin className="text-professional-blue" size={16} />
-                    <span>{reference.linkedin}</span>
+                    <span>{ngườiThamKhảo.linkedin}</span>
                   </div>
                 )}
               </div>
@@ -67,7 +67,7 @@ export default function References({ references, id }: ReferencesProps) {
       <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
         <p className="text-sm text-blue-800 text-center">
           <Info className="inline mr-2" size={16} />
-          Additional references available upon request. All references have been contacted and have agreed to provide recommendations.
+          Additional references will be provided upon request. All references have been contacted and agreed to provide recommendations.
         </p>
       </div>
     </motion.section>

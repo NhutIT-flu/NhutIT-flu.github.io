@@ -2,12 +2,12 @@ import { CVProfile } from "@shared/schema";
 import { UserPlus } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface ProfessionalSummaryProps {
-  profile: CVProfile;
+interface PropsTómTắtChuyênMôn {
+  thôngTinHồSơ: CVProfile;
   id?: string;
 }
 
-export default function ProfessionalSummary({ profile, id }: ProfessionalSummaryProps) {
+export default function TómTắtChuyênMôn({ thôngTinHồSơ, id }: PropsTómTắtChuyênMôn) {
   return (
     <motion.section 
       className="border-b border-gray-200 pb-8"
@@ -22,7 +22,7 @@ export default function ProfessionalSummary({ profile, id }: ProfessionalSummary
       </h2>
       <div className="bg-gray-50 p-6 rounded-lg border-l-4 border-professional-blue">
         <p className="text-lg leading-relaxed text-charcoal-primary">
-          {profile.summary}
+          {thôngTinHồSơ.summary}
         </p>
       </div>
     </motion.section>

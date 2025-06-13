@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import contactIllustration from "@assets/avatartouch.png";
 
-interface ContactFormProps {
+interface PropsFormLiênHệ {
   id?: string;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ id }) => {
-  const [name, setName] = useState('');
+const FormLiênHệ: React.FC<PropsFormLiênHệ> = ({ id }) => {
+  const [tên, setTên] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [tinNhắn, setTinNhắn] = useState('');
+  const [đangGửi, setĐangGửi] = useState(false);
+  const [thànhCông, setThànhCông] = useState(false);
+  const [lỗi, setLỗi] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const xửLýGửi = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setIsSuccess(false);
-    setIsError(false);
+    setĐangGửi(true);
+    setThànhCông(false);
+    setLỗi(false);
 
     try {
       const response = await fetch('/api/contact', {
@@ -25,40 +25,40 @@ const ContactForm: React.FC<ContactFormProps> = ({ id }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({ tên, email, tinNhắn }),
       });
 
       if (response.ok) {
-        setIsSuccess(true);
-        setName('');
+        setThànhCông(true);
+        setTên('');
         setEmail('');
-        setMessage('');
+        setTinNhắn('');
       } else {
-        setIsError(true);
+        setLỗi(true);
       }
     } catch (error) {
-      console.error('Error sending message:', error);
-      setIsError(true);
+      console.error('Lỗi khi gửi tin nhắn:', error);
+      setLỗi(true);
     } finally {
-      setIsSubmitting(false);
+      setĐangGửi(false);
     }
   };
 
   return (
     <section className="bg-white py-12 px-4 md:px-8 shadow-professional rounded-lg" id={id}>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
-        {/* Contact Form Section */}
+        {/* Phần Form Liên Hệ */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-3xl font-bold mb-8 text-center md:text-left text-navy-primary">Get in Touch</h2>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <h2 className="text-3xl font-bold mb-8 text-center md:text-left text-navy-primary">Contact</h2>
+          <form onSubmit={xửLýGửi} className="space-y-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-charcoal-primary">Your name</label>
+              <label htmlFor="name" className="block text-sm font-medium text-charcoal-primary">Your Name</label>
               <input 
                 type="text" 
                 id="name" 
-                placeholder="What's your good name?" 
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                placeholder="What is your name?" 
+                value={tên}
+                onChange={(e) => setTên(e.target.value)}
                 required
                 className="mt-1 block w-full px-4 py-3 bg-white border border-gray-200 rounded-md text-charcoal-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-professional-blue focus:border-transparent"
               />
@@ -68,7 +68,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ id }) => {
               <input 
                 type="email" 
                 id="email" 
-                placeholder="What's your email address?" 
+                placeholder="What is your email address?" 
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -81,33 +81,33 @@ const ContactForm: React.FC<ContactFormProps> = ({ id }) => {
                 id="message" 
                 rows={6} 
                 placeholder="How can I help you?" 
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                value={tinNhắn}
+                onChange={(e) => setTinNhắn(e.target.value)}
                 required
                 className="mt-1 block w-full px-4 py-3 bg-white border border-gray-200 rounded-md text-charcoal-primary placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-professional-blue focus:border-transparent"
               ></textarea>
             </div>
             <button 
               type="submit" 
-              disabled={isSubmitting}
+              disabled={đangGửi}
               className="w-full bg-professional-blue hover:bg-navy-primary text-white font-bold py-3 px-6 rounded-md transition duration-300 ease-in-out transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isSubmitting ? 'Sending...' : 'SEND MESSAGE'}
+              {đangGửi ? 'Sending...' : 'SEND MESSAGE'}
             </button>
-            {isSuccess && (
+            {thànhCông && (
               <p className="text-center text-green-600 mt-4">Message sent successfully!</p>
             )}
-            {isError && (
+            {lỗi && (
               <p className="text-center text-red-600 mt-4">Failed to send message. Please try again later.</p>
             )}
           </form>
         </div>
 
-        {/* Image Section */}
+        {/* Phần Hình Ảnh */}
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <img 
             src={contactIllustration} 
-            alt="Contact Illustration" 
+            alt="Contact illustration" 
             className="rounded-lg shadow-lg object-cover max-h-[500px] w-full"
           />
         </div>
@@ -116,4 +116,4 @@ const ContactForm: React.FC<ContactFormProps> = ({ id }) => {
   );
 };
 
-export default ContactForm; 
+export default FormLiênHệ; 

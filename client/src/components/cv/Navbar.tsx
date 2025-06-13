@@ -7,7 +7,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-export default function Navbar() {
+export default function ThanhĐiềuHướngChính() {
   return (
     <div className="bg-gray-100 py-4 shadow-sm">
       <div className="max-w-4xl mx-auto px-8">

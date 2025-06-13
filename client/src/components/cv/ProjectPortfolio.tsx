@@ -2,33 +2,33 @@ import { Project } from "@shared/schema";
 import { Laptop, Users, Zap, Shield, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
-interface ProjectPortfolioProps {
-  projects: Project[];
+interface PropsDanhMụcDựÁn {
+  dựÁn: Project[];
   id?: string;
 }
 
-const metricIcons = {
-  "Active Users": Users,
-  "Performance": Zap,
-  "Uptime": Shield,
-  "Insights": Zap,
-  "Productivity": Zap,
-  "Support": Users,
-  "Data Points": Users,
-  "Latency": Zap,
-  "Visualization": Zap,
+const biểuTượngSốLiệu = {
+  "Người Dùng Hoạt Động": Users,
+  "Hiệu Suất": Zap,
+  "Thời Gian Hoạt Động": Shield,
+  "Thông Tin Chi Tiết": Zap,
+  "Năng Suất": Zap,
+  "Hỗ Trợ": Users,
+  "Điểm Dữ Liệu": Users,
+  "Độ Trễ": Zap,
+  "Trực Quan Hóa": Zap,
 };
 
-function getMetricIcon(metric: string) {
-  for (const [key, Icon] of Object.entries(metricIcons)) {
-    if (metric.includes(key)) {
-      return Icon;
+function lấyBiểuTượngSốLiệu(sốLiệu: string) {
+  for (const [key, BiểuTượng] of Object.entries(biểuTượngSốLiệu)) {
+    if (sốLiệu.includes(key)) {
+      return BiểuTượng;
     }
   }
   return Users; // default icon
 }
 
-export default function ProjectPortfolio({ projects, id }: ProjectPortfolioProps) {
+export default function DanhMụcDựÁn({ dựÁn, id }: PropsDanhMụcDựÁn) {
   return (
     <motion.section 
       className="border-b border-gray-200 pb-8"
@@ -43,7 +43,7 @@ export default function ProjectPortfolio({ projects, id }: ProjectPortfolioProps
       </h2>
       
       <div className="space-y-6">
-        {projects.map((project) => (
+        {dựÁn.map((project) => (
           <div 
             key={project.id} 
             className="bg-white border border-gray-200 rounded-lg p-6 shadow-professional hover:shadow-executive transition-shadow"
@@ -85,12 +85,12 @@ export default function ProjectPortfolio({ projects, id }: ProjectPortfolioProps
             
             {project.metrics && (
               <div className="grid md:grid-cols-3 gap-4 text-sm">
-                {project.metrics.map((metric, index) => {
-                  const Icon = getMetricIcon(metric);
+                {project.metrics.map((sốLiệu, index) => {
+                  const BiểuTượng = lấyBiểuTượngSốLiệu(sốLiệu);
                   return (
                     <div key={index} className="flex items-center gap-2">
-                      <Icon className="text-professional-blue" size={16} />
-                      <span>{metric}</span>
+                      <BiểuTượng className="text-professional-blue" size={16} />
+                      <span>{sốLiệu}</span>
                     </div>
                   );
                 })}

@@ -52,7 +52,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
     return acc;
   }, {} as Record<string, Skill[]>);
 
-  const renderSkillCategory = (category: string, categorySkills: Skill[]) => {
+  const renderSkillCategory = (category: string, skillsInCategory: Skill[]) => {
     const Icon = categoryIcons[category as keyof typeof categoryIcons];
     const iconColor = categoryColors[category as keyof typeof categoryColors];
     
@@ -64,7 +64,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
             {category === "cloud" ? "Cloud & DevOps" : "Development Tools"}
           </h3>
           <div className="flex flex-wrap gap-2">
-            {categorySkills.map((skill) => (
+            {skillsInCategory.map((skill) => (
               <span
                 key={skill.id}
                 className={`px-3 py-1 rounded-full text-sm font-medium ${
@@ -86,7 +86,7 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
           {category === "frontend" ? "Frontend Development" : "Backend Development"}
         </h3>
         <div className="space-y-3">
-          {categorySkills.map((skill) => (
+          {skillsInCategory.map((skill) => (
             <div key={skill.id} className="flex justify-between items-center">
               <span className="font-medium">{skill.name}</span>
               <SkillProficiency level={skill.proficiency} />
@@ -107,12 +107,12 @@ export default function TechnicalSkills({ skills, id }: TechnicalSkillsProps) {
     >
       <h2 className="text-2xl font-bold text-navy-primary mb-6 flex items-center gap-2">
         <Code className="text-professional-blue" size={24} />
-        Technical Expertise Matrix
+        Technical Skills Matrix
       </h2>
       
       <div className="grid md:grid-cols-2 gap-6">
-        {Object.entries(groupedSkills).map(([category, categorySkills]) =>
-          <div key={category}>{renderSkillCategory(category, categorySkills)}</div>
+        {Object.entries(groupedSkills).map(([category, skillsInCategory]) =>
+          <div key={category}>{renderSkillCategory(category, skillsInCategory)}</div>
         )}
       </div>
     </motion.section>

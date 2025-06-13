@@ -4,15 +4,15 @@ import { ChevronRight, MoreHorizontal } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Breadcrumb = React.forwardRef<
+const ThanhĐiềuHướng = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithoutRef<"nav"> & {
     separator?: React.ReactNode
   }
 >(({ ...props }, ref) => <nav ref={ref} aria-label="breadcrumb" {...props} />)
-Breadcrumb.displayName = "Breadcrumb"
+ThanhĐiềuHướng.displayName = "ThanhĐiềuHướng"
 
-const BreadcrumbList = React.forwardRef<
+const DanhSáchThanhĐiềuHướng = React.forwardRef<
   HTMLOListElement,
   React.ComponentPropsWithoutRef<"ol">
 >(({ className, ...props }, ref) => (
@@ -25,9 +25,9 @@ const BreadcrumbList = React.forwardRef<
     {...props}
   />
 ))
-BreadcrumbList.displayName = "BreadcrumbList"
+DanhSáchThanhĐiềuHướng.displayName = "DanhSáchThanhĐiềuHướng"
 
-const BreadcrumbItem = React.forwardRef<
+const MụcThanhĐiềuHướng = React.forwardRef<
   HTMLLIElement,
   React.ComponentPropsWithoutRef<"li">
 >(({ className, ...props }, ref) => (
@@ -37,9 +37,9 @@ const BreadcrumbItem = React.forwardRef<
     {...props}
   />
 ))
-BreadcrumbItem.displayName = "BreadcrumbItem"
+MụcThanhĐiềuHướng.displayName = "MụcThanhĐiềuHướng"
 
-const BreadcrumbLink = React.forwardRef<
+const LiênKếtThanhĐiềuHướng = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentPropsWithoutRef<"a"> & {
     asChild?: boolean
@@ -55,9 +55,9 @@ const BreadcrumbLink = React.forwardRef<
     />
   )
 })
-BreadcrumbLink.displayName = "BreadcrumbLink"
+LiênKếtThanhĐiềuHướng.displayName = "LiênKếtThanhĐiềuHướng"
 
-const BreadcrumbPage = React.forwardRef<
+const TrangThanhĐiềuHướng = React.forwardRef<
   HTMLSpanElement,
   React.ComponentPropsWithoutRef<"span">
 >(({ className, ...props }, ref) => (
@@ -70,9 +70,9 @@ const BreadcrumbPage = React.forwardRef<
     {...props}
   />
 ))
-BreadcrumbPage.displayName = "BreadcrumbPage"
+TrangThanhĐiềuHướng.displayName = "TrangThanhĐiềuHướng"
 
-const BreadcrumbSeparator = ({
+const DấuPhânCáchThanhĐiềuHướng = ({
   children,
   className,
   ...props
@@ -86,9 +86,9 @@ const BreadcrumbSeparator = ({
     {children ?? <ChevronRight />}
   </li>
 )
-BreadcrumbSeparator.displayName = "BreadcrumbSeparator"
+DấuPhânCáchThanhĐiềuHướng.displayName = "DấuPhânCáchThanhĐiềuHướng"
 
-const BreadcrumbEllipsis = ({
+const DấuBaChấmThanhĐiềuHướng = ({
   className,
   ...props
 }: React.ComponentProps<"span">) => (
@@ -102,14 +102,14 @@ const BreadcrumbEllipsis = ({
     <span className="sr-only">More</span>
   </span>
 )
-BreadcrumbEllipsis.displayName = "BreadcrumbElipssis"
+DấuBaChấmThanhĐiềuHướng.displayName = "DấuBaChấmThanhĐiềuHướng"
 
 export {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-  BreadcrumbEllipsis,
+  ThanhĐiềuHướng,
+  DanhSáchThanhĐiềuHướng,
+  MụcThanhĐiềuHướng,
+  LiênKếtThanhĐiềuHướng,
+  TrangThanhĐiềuHướng,
+  DấuPhânCáchThanhĐiềuHướng,
+  DấuBaChấmThanhĐiềuHướng,
 }
